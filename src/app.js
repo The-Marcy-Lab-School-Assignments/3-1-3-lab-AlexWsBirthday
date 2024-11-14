@@ -34,7 +34,28 @@ export default async function app(appDiv) {
   // render out the books
   // renderBookList
 
-  // bookListEl.addEventListener('???', () => {})
+  // Fetch the books!
+  const books = await getFirstThreeFantasyBooks()
+  console.log(books)
+  // render out the books
+  renderBookList(bookListEl, books) //populates container with data
 
-  // newUserFormEl.addEventListener('???', () => {})
+  bookListEl.addEventListener('click', async (event) => {
+    if (event.target.tagName === 'BUTTON') {
+      console.log(event)
+      const authorId = event.target.dataset.authorUrlKey;
+
+      if (authorId) {
+        // Fetch author data
+        const authorData = await getAuthor(authorId);
+        // Render author data
+        if (authorData) {
+          await renderAuthorInfo(authorInfoEl, authorData);
+        }
+      }
+
+    }
+  })
+
+
 }
