@@ -63,7 +63,42 @@ export const renderAuthorInfo = (authorInfoEl, author) => {
 
 
 export const renderNewUserForm = (newUserFormEl) => {
+    newUserFormEl.innerHTML = `
+    <label for="username">Username</label>
+    <input id="username" name="username" type="text"></input>
+    <label for="is-cool">Is this user cool?</label>
+    <input id="is-cool" name="isCool" type="checkbox"></input>
+    <label for="favorite-language">Favorite Language</label>
+    <select id="favorite-language" name="favoriteLanguage">
+        <option value="None">None</option>
+        <option value="JavaScript">JavaScript</option>
+        <option value="Python">Python</option>
+        <option value="Ruby">Ruby</option>
+    </select>
+    <button>Create User</button>`
+
 }
 
 export const renderNewUser = (newUserEl, newUser) => {
+    newUserEl.innerHTMl = ''
+
+    const username = document.createElement('h2')
+    //creating the dataset attribute and naming it userID, giving it the value of the new user's id
+    username.textContent = newUser.username
+    //don't make this a string. oops.
+    username.dataset.userId = newUser.id
+
+    const isCoolConRender = document.createElement('p')
+
+    if (newUser.isCool) {
+        isCoolConRender.textContent = "The hippest in the house!"
+    } else {
+        isCoolConRender.textContent = "A real square."
+    }
+
+
+    const favLang = document.createElement('p')
+    favLang.textContent = `Favorite Language: ${newUser.favoriteLanguage}`
+
+    newUserEl.append(username, isCoolConRender, favLang)
 }

@@ -61,26 +61,26 @@
       "FrScTe8": 1,
       "FrScTe9": 1,
       "FrScTe10": 1,
-      "FrScTe11": 0,
-      "FrScTe12": 0,
-      "FrScTe13": 0,
-      "FrScTe14": 0,
-      "FrScTe15": 0,
+      "FrScTe11": 1,
+      "FrScTe12": 1,
+      "FrScTe13": 1,
+      "FrScTe14": 1,
+      "FrScTe15": 1,
       "FrScTe16": 1,
       "FrScTe17": 1,
-      "FrScTe18": 0,
-      "FrScTe19": 0
+      "FrScTe18": 1,
+      "FrScTe19": 1
     },
     "Modify Tests": {
       "MoTe1": 1,
       "MoTe2": 1,
-      "MoTe3": 0,
-      "MoTe4": 0
+      "MoTe3": 1,
+      "MoTe4": 1
     }
   },
   "humanReadable": {
-    "From Scratch Tests": "12/19",
-    "finalTestScore": "FINAL SCORE: 14/23",
-    "Modify Tests": "2/4"
+    "From Scratch Tests": "19/19",
+    "finalTestScore": "FINAL SCORE: 23/23",
+    "Modify Tests": "4/4"
   }
 }

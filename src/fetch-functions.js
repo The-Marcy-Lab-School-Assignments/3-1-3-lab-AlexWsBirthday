@@ -98,5 +98,43 @@ export const getAuthor = async (urlKey) => {
 
 };
 
-export const createNewUser = () => {
+//takes user object as parameter
+export const createNewUser = async (user) => {
+
+    try {
+        const userDatabase = `https://jsonplaceholder.typicode.com/users`
+        //fetching data using the arguments from fetchHandler
+        const response = await fetch(userDatabase, {// sending a fetch to the JSON server, this object is the optional pocket where you can feed it data depending on what you want to do (post/patch/read/delete)
+            method: 'POST', // fetch option to add to the data in the fetch URL
+            headers: {
+                'Content-Type': 'application/json', // lets the server know that the data being sent is in JSON formatting
+            },
+            //stringifying/reformatting the user object so that the database can successfully store the user data 
+            body: JSON.stringify(user),
+        });
+
+
+        //checking if the fetch promise is settled properly
+        if (!response.ok) {
+            throw new Error(`Failed to create new user`)
+        }
+
+        //response type check function 
+        const isJson = (response.headers.get('content-type') || '').includes('application/json')
+
+        //getting data by checking if the response is json first, then translating it into JS
+        let newUser = isJson ? await response.json() : await response.text()
+
+        //logging the data in the console
+        console.log(newUser)
+        //returning newUser if the user is successfully posted 
+        return newUser
+
+
+    } catch (error) {
+        console.warn(error.message);
+
+        return null
+    }
+
 }

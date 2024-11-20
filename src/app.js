@@ -57,5 +57,15 @@ export default async function app(appDiv) {
     }
   })
 
+  renderNewUserForm(newUserFormEl)
+  newUserFormEl.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const userData = new FormData(event.target)
+    const formObj = Object.fromEntries(userData)
+    const user = await createNewUser(formObj)
+    renderNewUser(newUserEl, user)
+    // console.log("this is user data: ", userData)
+  })
+
 
 }
